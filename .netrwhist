@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/ariunbayar/Downloads/vim/nyamba_vim'
+let g:netrw_dirhist_2='/etc/apache2/sites-enabled'
+let g:netrw_dirhist_3='/home/ariunbayar/Desktop/incris_rc2/incris_rc2/lib/model'
+let g:netrw_dirhist_4='/home/ariunbayar/.vim/ftplugin/python/pyflakes'
+let g:netrw_dirhist_5='/home/ariunbayar/.vim/ftplugin/python'
+let g:netrw_dirhist_6='/home/ariunbayar/.vim'
+let g:netrw_dirhist_7='/etc/resolvconf'
