@@ -59,7 +59,7 @@ let g:solarized_contrast="high"
 let g:solarized_visibility="high"
 colorscheme solarized
 
-let g:NERDTreeWinPos = 'Right'
+let g:NERDTreeWinPos = 'left'
 
 """" Windows
 au VimEnter * NERDTree
