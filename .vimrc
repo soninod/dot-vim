@@ -7,10 +7,11 @@ set showcmd
 set modeline
 
 """ gvim configuration
-set guifont=Ubuntu\Mono\ 11
+set guifont=Monaco\ 12
 if has("gui_running")
   set lines=50 columns=200
   set guioptions-=T
+  set guifont=Monaco:h12
   set guioptions-=l
   set guioptions-=L
 endif
@@ -58,7 +59,7 @@ let g:solarized_contrast="high"
 let g:solarized_visibility="high"
 colorscheme solarized
 
-let g:NERDTreeWinPos = 'left'
+let g:NERDTreeWinPos = 'Right'
 
 """" Windows
 au VimEnter * NERDTree
@@ -80,7 +81,6 @@ let NERDTreeIgnore=[
       \'Steam',
       \'Public',
       \'Dropbox',
-      \'Documents',
       \'Pictures',
       \'Music',
       \]
