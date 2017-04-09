@@ -7,7 +7,6 @@ set showcmd
 set modeline
 
 """ gvim configuration
-set guifont=Monaco\ 12
 if has("gui_running")
   set lines=50 columns=200
   set guioptions-=T
@@ -16,6 +15,48 @@ if has("gui_running")
   set guioptions-=L
 endif
 
+" Vundle setup
+set rtp+=~/.vim/bundle/Vundle.vim
+
+
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+
+" Plugin Syntastic
+Plugin 'scrooloose/syntastic'
+let g:syntastic_enable_signs = 1
+let g:syntastic_error_symbol = '✘'
+let g:syntastic_style_error_symbol = '✘'
+let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_style_warning_symbol = '⚠'
+let g:syntastic_python_checkers = ['pyflakes']
+
+" Vim-blade
+Plugin 'jwalton512/vim-blade'
+
+" Vim-VueJS
+Plugin 'othree/javascript-libraries-syntax.vim'
+let g:used_javascript_libs = 'vue'
+autocmd BufReadPre *.vue let b:javascript_lib_use_vue = 1
+
+Plugin 'posva/vim-vue'
+autocmd FileType vue syntax sync fromstart
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
+
+" Vim-fugitive
+Plugin 'tpope/vim-fugitive'
+
+" VIM-JSX"
+Plugin 'pangloss/vim-javascript' 
+Plugin 'mxw/vim-jsx'
+let g:jsx_ext_required = 0
+
+set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
+
+
+call vundle#end()            " required
 
 """ folding
 "set foldmethod=syntax
@@ -23,9 +64,7 @@ set foldmethod=indent
 set foldnestmax=2
 set foldtext=MyFoldText()
 set fillchars=fold:_
-"set foldcolumn=4
-"au BufWinLeave * mkview
-"au BufWinEnter * silent loadview
+
 function! MyFoldText()
     " setting fold text
     let nl = v:foldend - v:foldstart + 1
@@ -35,12 +74,15 @@ function! MyFoldText()
     let txt = getline(v:foldstart).' +-- '.nl.' lines'
     return txt
 endfunction
+
 nmap <space> za
+nmap <CR> za
+nmap e za
 
 """ tabstops
 set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 tabstop=2 softtabstop=2
 set expandtab
 set autoindent
@@ -50,7 +92,8 @@ filetype plugin on
 filetype plugin indent on
 
 """ Colorscheme
-syntax enable
+syntax on
+
 "set background=light
 set background=dark
 set t_Co=16
@@ -98,21 +141,10 @@ autocmd FileType htmldjango set ft=htmldjango.html " For SnipMate
 autocmd BufRead,BufNewFile *.twig set syntax=htmldjango " For sf2
 let python_highlight_all=1
 
-" Omnicompletion
-" set Ctrl+j in insert mode, like VS.Net
-imap <C-j> <C-X><C-O>
-" :inoremap <expr> <CR> pumvisible() ? "\<c-y>" : "\<c-g>u\<CR>"
-" set completeopt as don't show menu and preview
-set completeopt=menuone
-" " Popup menu hightLight Group
-" highlight Pmenu ctermbg=13 guibg=LightGray
-" highlight PmenuSel ctermbg=7 guibg=DarkBlue guifg=White
-" highlight PmenuSbar ctermbg=7 guibg=DarkGray
-" highlight PmenuThumb guibg=Black
-set nocompatible
-filetype plugin indent on
 set enc=utf-8
  
 """ignore
 let $PYTHONDONTWRITEBYTECODE = 1
 let $PYTHONIOENCODING = 'utf-8'
+
+Plugin 'scrooloose/nerdcommenter'
